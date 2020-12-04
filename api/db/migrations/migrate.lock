@@ -1,0 +1,5 @@
+# Prisma Migrate lockfile v1
+
+20201204000919-user-task-create
+20201204002849-user-task-create-make-details-optional
+20201204102037-migration
