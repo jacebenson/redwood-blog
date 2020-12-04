@@ -2,6 +2,7 @@ module.exports = {
   rule: {
   active: true,
   order:10000,
+  name: "jacewashere rule",
   command: function (input) {
       try {
           if (input.email==="jace@d.com") {

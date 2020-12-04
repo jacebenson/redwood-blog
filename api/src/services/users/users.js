@@ -12,64 +12,61 @@ export const user = ({ id }) => {
 }
 
 export const createUser = ({ input }) => {
+  let now = (()=>{
+    return new Date().toISOString()
+  })()
   console.log('createUser input', input)
   let beforeRulesFulfilled = ()=>{
     rules.forEach((rule) => {
-    console.log(rule.order, rule.name, 'begin');
+      if(rule.active && rule.order){
+    console.log(now, rule.order, rule.name, 'begin');
     let previous = JSON.stringify(input);
     previous = JSON.parse(previous);
+
     let current = rule.command(input);
+
     //current = JSON.parse(JSON.stringify(current));
     if (previous !== current) {
       for (var prop in current) {
         if (previous[prop] != current[prop]) {
-          console.log(prop, previous[prop] + '=>' + current[prop]);
+          console.log(now, prop, previous[prop] + '=>' + current[prop]);
         }
       }
     } else {
-      console.log(rule.name, 'else');
+      console.log(now, rule.name, 'else');
     }
     if (previous === current) {
-      console.log(rule.name, 'no changes to current');
+      console.log(now, rule.name, 'no changes to current');
     }
 
-    console.log(rule.order, rule.name, 'end');
+    console.log(now, rule.order, rule.name, 'end');
+  } else {
+    console.log(now, rule.order, rule.name, 'skipped');
+  }
   })
-  console.log('after rules applied', input)
+  console.log(now, 'after rules applied', input)
   return input
 }
 let beforeRulesRejected = (error)=>{
-  console.log('beforeRulesRejected', error)
+  console.log(now, 'beforeRulesRejected', error)
 }
-  let insertUser = new Promise(beforeRulesFulfilled,beforeRulesRejected)
+  /*let insertUser = new Promise(beforeRulesFulfilled,beforeRulesRejected)
   .then(()=>{
+    console.log(now, 'in then')
   }).catch((reason)=>{
-    console.log('reason',reason)
+    console.log(now, 'reason',reason)
   }).finally((info)=>{
-    console.log("all done", info)
+    console.log(now, "all done", info)
     return db.user.create({
       data: input,
     })
   })
-
+*/
+//input =
+beforeRulesFulfilled()
   return db.user.create({
     data: input,
   })
-  let due = new Date();
-  due.setDate(due.getDate() + 7)
-  let output = db.task.create({
-    data: {
-      summary: "Onboard" + input.name,
-      due: due
-    }
-  }).then(() => {
-    return db.user.create({
-      data: input,
-    })
-  })
-  console.log(output)
-  return output
-
 }
 
 export const updateUser = ({ id, input }) => {

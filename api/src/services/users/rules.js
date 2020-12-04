@@ -8,6 +8,7 @@ rulesList.push(createTask)
 rulesList.push(updatejacedcom)
 rulesList.push(updatejacedcomfalse)
 
+rulesList.sort((a,b)=>a.order-b.order);
 
 //const fs = require('fs')
 //const path = require('path')

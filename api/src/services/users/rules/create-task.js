@@ -5,6 +5,7 @@ module.exports = {
   active: true,
   order: 100,
   command: (input)=>{
+    console.log(new Date(), 'start create task')
       try {
           if (input) {
             console.log('rule 2 input', input)
@@ -17,8 +18,12 @@ module.exports = {
                 due: due
               }
             }).then(()=>{
+
+      console.log(new Date(), 'end create task in then')
               return input
             })
+
+      console.log(new Date(), 'end create task')
             return createTask;
           }
       } catch (e) {

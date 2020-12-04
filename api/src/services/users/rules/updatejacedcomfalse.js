@@ -1,5 +1,6 @@
 module.exports = {
   rule: {
+    name: "jacedwasherefalse",
   active: false,
   command: function (input) {
       try {
