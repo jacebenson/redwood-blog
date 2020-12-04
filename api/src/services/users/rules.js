@@ -1,7 +1,18 @@
-const fs = require('fs')
-const path = require('path')
-const rulesDir = path.resolve("src/services/users/rules")
+
+import { rule as createTask } from './rules/create-task'
+import { rule as updatejacedcom } from './rules/updatejacedcom'
+import { rule as updatejacedcomfalse } from './rules/updatejacedcomfalse'
+
 let rulesList = [];
+rulesList.push(createTask)
+rulesList.push(updatejacedcom)
+rulesList.push(updatejacedcomfalse)
+
+
+//const fs = require('fs')
+//const path = require('path')
+//const rulesDir = path.resolve("src/services/users/rules")
+/*let rulesList = [];
 try{
 fs.readdir(rulesDir, (err, files) => {
   if (err) { console.log("readdir error", err) }
@@ -32,6 +43,7 @@ fs.readdir(rulesDir, (err, files) => {
 }catch(e){
   console.log("Error loading rules", e)
 }
+*/
 module.exports = {
   rules: rulesList
 }
