@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const rulesDir = path.resolve("src/services/users/rules")
 let rulesList = [];
-
+try{
 fs.readdir(rulesDir, (err, files) => {
   if (err) { console.log("readdir error", err) }
   console.log("readdir files", files)
@@ -29,6 +29,9 @@ fs.readdir(rulesDir, (err, files) => {
     }
   })
 })
+}catch(e){
+  console.log("Error loading rules", e)
+}
 module.exports = {
   rules: rulesList
 }

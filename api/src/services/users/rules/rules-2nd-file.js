@@ -1,4 +1,5 @@
 module.exports = {
+  rule: {
   active: false,
   command: function (input) {
       try {
@@ -13,4 +14,5 @@ module.exports = {
       return input;
   },
   order: 10
+}
 }

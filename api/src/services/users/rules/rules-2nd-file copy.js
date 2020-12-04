@@ -1,4 +1,5 @@
 module.exports = {
+  rule: {
   active: true,
   order:10000,
   command: function (input) {
@@ -13,4 +14,5 @@ module.exports = {
       }
       return input;
   }
+}
 }

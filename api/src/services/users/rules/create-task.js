@@ -1,5 +1,6 @@
 import { db } from 'src/lib/db'
 module.exports = {
+  rule: {
   name: "create task",
   active: true,
   order: 100,
@@ -24,5 +25,6 @@ module.exports = {
           console.log('test.js error', e);
       }
       return input;
-  },
+  }
+  }
 }
