@@ -2,7 +2,7 @@ datasource DS {
   // optionally set multiple providers
   // example: provider = ["sqlite", "postgresql"]
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -34,7 +34,6 @@ model Source {
   created    DateTime  @default(now())
   lastRun    DateTime? @default(now())
   sourceType String    @default("RSS")
-  url        String
 }
 
 model Item {

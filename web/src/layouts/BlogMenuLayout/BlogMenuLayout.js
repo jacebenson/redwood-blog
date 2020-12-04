@@ -4,6 +4,8 @@ const BlogMenuLayout = ({ children }) => {
     <ul>
       <li><Link to={routes.home()}>Home</Link></li>
       <li><Link to={routes.tasks()}>Tasks</Link></li>
+      <li><Link to={routes.sources()}>Sources</Link></li>
+      <li><Link to={routes.items()}>Items</Link></li>
       <li><Link to={routes.users()}>Users</Link></li>
     </ul>
   </header>
